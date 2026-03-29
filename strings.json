@@ -1,0 +1,44 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to AECC Battery",
+        "description": "Enter the local network details for your AECC EMS battery hub. The battery must be reachable at the given IP before you can continue.",
+        "data": {
+          "host": "IP Address",
+          "port": "TCP Port",
+          "name": "Device Name"
+        },
+        "data_description": {
+          "host": "Static local IP of your battery (e.g. 192.168.1.213)",
+          "port": "TCP port the battery listens on (typically 6001 or 8001)",
+          "name": "Friendly name shown in Home Assistant"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect – check the IP, port, and that the battery is online.",
+      "unknown": "Unexpected error – see the Home Assistant log for details."
+    },
+    "abort": {
+      "already_configured": "This battery (host:port) is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Reconfigure AECC Battery",
+        "description": "Update the connection details. Home Assistant will reconnect immediately.",
+        "data": {
+          "host": "IP Address",
+          "port": "TCP Port",
+          "name": "Device Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect – check the IP, port, and that the battery is online.",
+      "unknown": "Unexpected error – see the Home Assistant log for details."
+    }
+  }
+}

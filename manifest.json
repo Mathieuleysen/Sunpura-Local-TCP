@@ -1,0 +1,12 @@
+{
+  "domain": "aecc_local",
+  "name": "AECC Battery (Local TCP)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "",
+  "iot_class": "local_polling",
+  "quality_scale": "bronze",
+  "requirements": [],
+  "version": "1.0.0"
+}

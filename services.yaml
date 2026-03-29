@@ -1,0 +1,75 @@
+read_registers:
+  name: Read Control Registers
+  description: >
+    Read a range of Energycontrolparameters registers and store the result
+    in the register_scan sensor. Use this to discover which registers control
+    your battery's charge/discharge power.
+  fields:
+    addresses:
+      name: Register Addresses
+      description: List of register addresses to read, e.g. [3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010]
+      required: true
+      example: [3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010]
+      selector:
+        object:
+
+set_raw_register:
+  name: Set Raw Register
+  description: >
+    Write any value to any register address. Use this to experiment with
+    finding the correct power control registers. Check the battery sensors
+    after each call to see if anything changed.
+  fields:
+    address:
+      name: Register Address
+      description: The register address as a string, e.g. "3005"
+      required: true
+      example: "3005"
+      selector:
+        text:
+    value:
+      name: Value
+      description: The value to write, e.g. "100" or "2400" or "-2400"
+      required: true
+      example: "100"
+      selector:
+        text:
+
+try_command:
+  name: Try Any Command
+  description: >
+    Send any Get or Set command to the battery and log the full response.
+    Use this to discover which commands your firmware supports.
+  fields:
+    direction:
+      name: Direction
+      description: "Get or Set"
+      required: true
+      example: "Get"
+      selector:
+        select:
+          options: ["Get", "Set"]
+    command:
+      name: Command Name
+      description: >
+        The command string, e.g. "AiSystemTimesWithEnergyMode", "EnergyParameter",
+        "Energycontrolparameters"
+      required: true
+      example: "AiSystemTimesWithEnergyMode"
+      selector:
+        text:
+    payload:
+      name: Payload (optional)
+      description: Optional JSON object to include in the request
+      required: false
+      example: '{"controlTime1": "1,00:00,23:59,1000,0,6,0,0,0,10,100"}'
+      selector:
+        object:
+
+scan_power_registers:
+  name: Scan Power Registers
+  description: >
+    Reads registers 3000–3150 and 4000–4050 in batches and logs all non-zero
+    values. Run this while the battery is charging or discharging to identify
+    which register holds the actual power setpoint. Results appear in the
+    Register Scan sensor attributes.
