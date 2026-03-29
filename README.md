@@ -18,3 +18,5 @@ The port for control is 8080.
 Only ONE local device can control the battery at the same time.
 
 Upload files under: custom_components/aecc_local
+
+<img width="1159" height="348" alt="image" src="https://github.com/user-attachments/assets/b9d04c19-ad92-49aa-8b8c-377237ef0d4f" />
